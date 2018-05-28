@@ -12,6 +12,7 @@ import {
   getQueryDefinition,
   isProduction,
   maybeDeepFreeze,
+  forceCasts,
   hasDirectives,
 } from 'apollo-utilities';
 
@@ -524,8 +525,9 @@ export class QueryManager<TStore> {
           if (newData) {
             // clear out the latest new data, since we're now using it
             this.setQuery(queryId, () => ({ newData: null }));
-
             data = newData.result;
+            if(options.forceCasts == true)
+              data = forceCasts(data);
             isMissing = !newData.complete ? !newData.complete : false;
           } else {
             if (lastResult && lastResult.data && !errorStatusChanged) {
@@ -545,6 +547,8 @@ export class QueryManager<TStore> {
               isMissing = !readResult.complete;
             }
           }
+
+
 
           let resultFromStore: ApolloQueryResult<T>;
 

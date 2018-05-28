@@ -9,4 +9,5 @@ export * from './util/environment';
 export * from './util/errorHandling';
 export * from './util/isEqual';
 export * from './util/maybeDeepFreeze';
+export * from './util/forceCasts';
 export * from './util/warnOnce';

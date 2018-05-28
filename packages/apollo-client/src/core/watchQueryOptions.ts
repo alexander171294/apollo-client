@@ -68,6 +68,12 @@ export interface ModifiableWatchQueryOptions {
    * Whether or not updates to the network status should trigger next on the observer of this query
    */
   notifyOnNetworkStatusChange?: boolean;
+
+   /*
+     * Force cast types string->Date
+     * Default: false
+     */
+  forceCasts?: boolean;
 }
 
 /**
